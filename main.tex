@@ -1,0 +1,64 @@
+\documentclass[main=french, 11pt, a4paper,twoside]{book}
+%\usepackage{import}
+\usepackage{packtheme}
+
+\usepackage{makeidx}
+\makeindex
+
+\begin{document}
+
+% Page de garde ---------------------------------------------------------------
+\frontmatter
+\subfile{titlefile}
+\cleardoublepage
+% Pour un raison que j'ignore, la page de garde pose problème à TexStudio, mais on peut quand même compiler avec TexWorks. Désolée !
+% L'ordre de compilation est le suivant: pdfLaTeX+Biber+MakeIndex+pdfLaTeX
+
+
+% Abstract -------------------------------------------------------------------
+\subfile{abstractfile}
+
+% Remerciements --------------------------------------------------------------
+\subfile{merci}
+
+
+% Sommaire ------------------------------------------------------------------------------
+\pagestyle{plain}
+\tableofcontents
+\clearpage
+
+% Contenu --------------------------------------------------------------------------------
+\mainmatter
+\pagestyle{fancy}
+
+
+
+
+\subfile{sections/INTRO}
+
+
+
+
+\part{Exemple de première partie\label{part:exemple}}
+\subfile{sections/exemple chapitre}
+
+\subfile{sections/CONCLUSION}
+
+
+% Annexes -------------------------------------------------------------------------------
+
+\printbibliography
+
+\appendix
+\renewcommand\chaptername{Annexe}
+
+\part*{\addcontentsline{toc}{part}{Annexes}%
+    \protect\numberline{}Annexes}
+\subfile{sections/Annexes}
+
+
+
+
+\backmatter
+
+\end{document}

@@ -1,0 +1,91 @@
+
+\documentclass[main.tex]{subfiles}
+\begin{document}
+\begin{titlepage}
+\pagestyle{plain}
+
+\newgeometry{left=7.4cm,bottom=2cm, top=1cm, right=0.5cm}
+
+\tikz[remember picture,overlay] \node[opacity=1,inner sep=0pt] at (-13mm,-135mm){\includegraphics{photo_logo/Frame-ups.pdf}};
+
+%*****************************************************
+%******** NUMÉRO D'ORDRE DE LA THÈSE À COMPLÉTER *****
+%******** POUR LE SECOND DÉPOT                   *****
+%*****************************************************
+
+\color{white}
+
+\begin{picture}(0,0)
+\put(-152,-743){\rotatebox{90}{\Large \textsc{THESE DE DOCTORAT}}} \\
+\put(-120,-743){\rotatebox{90}{NNT : 20XXUPASXXXX}}
+\end{picture}
+ 
+%*****************************************************
+%**  LOGO  ÉTABLISSEMENT PARTENAIRE SI COTUTELLE
+%**  CHANGER L'IMAGE PAR DÉFAUT **
+%*****************************************************
+\vspace{-14mm} % à ajuster en fonction de la hauteur du logo
+\flushright \includegraphics[scale=1]{photo_logo/logo2.png}
+
+%*****************************************************
+%******************** TITRE **************************
+%*****************************************************
+
+\flushright
+\vspace{10mm} % à régler éventuellement
+\color{Prune}
+\fontfamily{cmss}\fontseries{m}\fontsize{22}{26}\selectfont
+\Huge Titre de votre thèse\\
+    Sous-titre si besoin\\
+
+\normalsize
+\color{black}
+\Large{\textit{\textsf{Title in English\\
+                title cont'd}}} \\
+%*****************************************************
+
+\fontfamily{fvs}\fontseries{m}\fontsize{8}{12}\selectfont
+
+\vspace{1.5cm}
+
+\normalsize
+\textbf{Thèse de doctorat de l'université Paris-Saclay}
+\\
+
+\vspace{6mm}
+
+\small École doctorale n$^{\circ}$ XXX, nom de votre école doctorale\\
+\small Spécialité de doctorat : votre spécialité\\
+\small Graduate School : votre graduate school. Référent : organisme de UPSaclay référent \\
+\vspace{6mm}
+
+{\footnotesize Thèse préparée dans l'unité de recherche \textbf{Nom de votre unité (dépendance de l'UR)},\\sous la direction de \textbf{Directeurice}, fonction de votre directeurice, et la co-direction de \textbf{co-directeurice}, fonction}\\
+\vspace{15mm}
+%\vfill
+
+\textbf{Thèse soutenue à Paris-Saclay, le date en toutes lettres, par}\\
+\bigskip
+%\vfill
+\Large {\color{Prune} \textbf{Prénom NOM}} % Changer le Prénom et le NOM
+
+%************************************
+\vspace{\fill} % ALIGNER LE TABLEAU EN BAS DE PAGE
+%************************************
+
+%\bigskip
+
+\flushleft
+\small {\color{Prune} \textbf{Composition du jury}}\\
+{\color{Prune} \scriptsize {Membres du jury avec voix délibérative}} \\
+\vspace{2mm}
+\scriptsize
+\begin{tabular}{|p{7cm}l}
+\arrayrulecolor{Prune}
+\textbf{Prénom NOM} &  Président.e \vspace{-.5ex}\\ 
+Fonction, Université de rattachement   &   \\ 
+\textbf{Prénom NOM} &  Rapporteurice \& Examinateurice\vspace{-.5ex}\\ 
+Fonction, Université de rattachement  &  
+\end{tabular}
+
+\end{titlepage}
+\end{document}

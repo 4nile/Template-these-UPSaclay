@@ -1,0 +1,251 @@
+\ProvidesPackage{packtheme}
+
+% Langue
+%\usepackage{listingsutf8}
+\usepackage[french]{babel}
+    \addto\captionsfrench{\def\tablename{Tableau}}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+%% Bibliographie style
+\usepackage[
+            backend=biber,
+            style=numeric-comp,
+            sorting=none,
+            date=year
+            ]{biblatex}
+\DeclareSourcemap{
+  \maps[datatype=bibtex]{
+    \map{
+      \step[fieldset=issn, null]% These allow to get rid of unwanted labels
+      \step[fieldset=note, null]%
+      \step[fieldset=url, null]%
+      \step[fieldset=urldate, null]%
+      \step[fieldset=location, null]%
+      \step[fieldset=publisher, null]%
+    }
+  }
+}
+\addbibresource{references.bib}
+
+
+
+% Mise en page
+\usepackage[skip=6pt]{parskip}% des jolis espaces entre paragraphes
+\usepackage[export]{adjustbox}
+\usepackage{caption}
+\usepackage{supertabular}
+\captionsetup[figure]{font=footnotesize}
+\captionsetup[table]{font=footnotesize}
+\usepackage[default,oldstyle,scale=.95]{opensans} % police Open Sans
+\usepackage[squaren,mediumqspace,textstyle]{SIunits}% Permet d'appeler les unités SI en mode équation
+\usepackage{paracol}
+    \setcolumnwidth{0.40\textwidth, 0.40\textwidth}
+    \parindent=0pt
+    \setlength\columnsep{8mm}
+    \footnotelayout{m}
+\usepackage{graphicx}
+\usepackage{mdframed}
+\usepackage{multirow} %% Pour mettre un texte sur plusieurs rangées
+\usepackage{multicol} %% Pour mettre un texte sur plusieurs colonnes
+\usepackage{tikz}
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+\usepackage[absolute]{textpos} 
+\usepackage{pdflscape}
+\usepackage{geometry}
+\usepackage{colortbl}
+\usepackage[nobottomtitles*]{titlesec}
+\usepackage{spverbatim}% Permet de mettre des lignes de code tel quel
+
+
+
+%% Couleurs Paris-Saclay
+\usepackage{xcolor}
+\definecolor{Prune}{RGB}{99,0,60}
+\definecolor{gray1}{RGB}{49,62,72} 
+\definecolor{gray2}{RGB}{124,135,143}
+\definecolor{gray3}{RGB}{213,218,223}
+\definecolor{pink1}{RGB}{198,11,70}
+\definecolor{pink2}{RGB}{237,20,91}
+\definecolor{orange1}{RGB}{238,52,35}
+\definecolor{orange2}{RGB}{243,115,32}
+\definecolor{purple1}{RGB}{124,42,144}
+\definecolor{purple2}{RGB}{125,106,175}
+\definecolor{brown}{RGB}{198,103,29}
+\definecolor{yellow}{RGB}{254,188,24}
+\definecolor{blue1}{RGB}{0,78,125}
+\definecolor{blue2}{RGB}{14,135,201}
+\definecolor{blue3}{RGB}{0,148,181}
+\definecolor{blue4}{RGB}{70,195,210}
+\definecolor{green1}{RGB}{0,128,122}
+\definecolor{green2}{RGB}{64,183,105}
+\definecolor{green3}{RGB}{140,198,62}
+\definecolor{green4}{RGB}{213,223,61}
+
+\definecolor{lightpink}{RGB}{237,233,235}
+
+\usepackage{listings,newtxtt}
+    \lstset{
+        basicstyle=\ttfamily,
+        keywordstyle=\bfseries,
+        columns=flexible,
+        breaklines=true,
+        breakatwhitespace=true,       
+        inputencoding=latin1,
+        literate=% Allow for German characters in lstlistings.
+            {é}{{\'e}}1
+            {è}{{\`e}}1
+            {ê}{{\^e}}1
+            {à}{{\`a}}1,
+        backgroundcolor=\color{lightpink},   
+        commentstyle=\color{green1},
+        keywordstyle=\color{blue2},
+        numberstyle=\color{green3},
+        stringstyle=\color{pink1},                 
+            }
+
+
+
+
+%% Margins, calculée pour avoir plus d'espace côté reliure
+\voffset = 0pt
+\headsep = 10mm
+\topmargin = -15.4mm
+\hoffset=-.33in
+\textwidth=6.6in
+\footskip=10mm
+\textheight=240.2mm
+\marginparwidth=0pt
+\marginparpush = 0pt
+\marginparsep=0in
+\evensidemargin=0in
+\oddsidemargin=0.33in
+
+\setlength{\parindent}{0pt}
+\renewcommand{\baselinestretch}{1.05}
+% Header and footer styles
+\usepackage{fancyhdr}
+\setlength{\headheight}{15mm}
+
+%\renewcommand{\partmark}[1]{\markright{#1}{}}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{#1}{}}
+
+\fancypagestyle{fancy}{
+    \fancyhf{}
+    \fancyhead[RE]{\textbf{\color{Prune}{\nouppercase{\rightmark}}}}
+    \fancyhead[LO]{\textbf{\color{Prune}{\nouppercase{\leftmark}}}}
+    \fancyfoot[LE,RO]{\color{Prune}{\thepage}}
+    \renewcommand{\headrulewidth}{1pt}
+    \renewcommand{\headrule}{\color{Prune}\hrulefill}
+    \renewcommand{\footrulewidth}{1pt}
+    \renewcommand{\footrule}{%
+        \ifodd\thepage
+            {\color{white}\rule{.8\textwidth}{\footrulewidth}}%
+            {\color{Prune}\rule{.2\textwidth}{\footrulewidth}}%
+        \else%
+            {\color{Prune}\rule{.2\textwidth}{\footrulewidth}}%
+            {\color{white}\rule{.8\textwidth}{\footrulewidth}}%
+        \fi}
+    }
+
+\fancypagestyle{plain}{% % <-- this is new
+  \fancyhf{} 
+  \fancyfoot[LE,RO]{\color{Prune}{\thepage}} % same placement as with page style "fancy"
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\headrule}{\color{white}}
+  \renewcommand{\footrulewidth}{0pt}
+  \renewcommand{\footrule}{\color{white}}
+  }
+
+\fancypagestyle{plainempty}{% % <-- this is new
+  \fancyhf{} 
+  \fancyfoot[LE,RO]{\color{Prune}{\thepage}} % same placement as with page style "fancy"
+  %\renewcommand{\headrulewidth}{0pt}
+  %\renewcommand{\headrule}{\color{white}}
+  }
+
+% Titles formatting
+\renewcommand\chapter{
+    \if@openright\cleardoublepage\else\clearpage\fi
+    \thispagestyle{plainempty}%
+    \global\@topnum\z@
+    \@afterindentfalse
+    \secdef\@chapter\@schapter
+    }
+    
+\titleformat{\chapter}[display]{\bfseries\Large\color{Prune}}{\chaptername\ \thechapter}
+{0.5ex} % sep
+{\vspace{1ex}\huge} % before code
+[\vspace{1ex}] % after code
+\titlespacing{\chapter}{0pc}{0ex}{12pt}
+
+\titleformat{\section}[hang]{\bfseries\Large}{\thesection\ }{0.5pt}
+{\vspace{0.1ex}
+}
+[\vspace{0.08ex}]
+\titlespacing{\section}{1.5pc}{4ex plus .1ex minus .2ex}{12pt}
+
+\titleformat{\subsection}[hang]{\bfseries\large}{\thesubsection\ }{1pt}
+{\vspace{0.1ex}
+}
+[\vspace{0.1ex}]
+\titlespacing{\subsection}{3pc}{2ex plus .1ex minus .2ex}{11pt}
+
+\setcounter{secnumdepth}{3}
+\titleformat{\subsubsection}[hang]{\bfseries\normalsize}{\thesubsubsection}{1em}
+{\vspace{0.1ex}
+}
+[\vspace{0.1ex}]
+\titlespacing*{\subsubsection}{4.5pc}{2ex plus .1ex minus .2ex}{8pt}
+
+% Maths et configuration figures, ATTENTION A L'ORDRE DE LOAD
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{textcomp}
+\usepackage{braket}
+\usepackage{dsfont}
+\usepackage{wasysym}
+\usepackage{afterpage}
+\usepackage{dutchcal}
+\DeclareMathSizes{11}{12}{6}{4}
+\usepackage{subfig}
+\usepackage{pgfplots}
+\pgfplotsset{width=10cm,compat=1.9}
+\renewcommand{\arraystretch}{1.5}
+
+
+%More referencing packages
+% References et configuration de la compilation
+\usepackage{subfiles}
+\usepackage{varioref}
+\usepackage{xr-hyper}
+\usepackage{hyperref}
+\usepackage{cleveref}
+%\usepackage{xr}
+
+\hypersetup{ % paramétrage couleur des liens hypertextes, toujours garder colorlinks=true
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=purple} 
+    
+%\usepackage{layout}
+
+% Some constant correct typeset, vous pouvez changer pour déclarer vos constantes
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\ii}{\mathrm{i}}
+\newcommand{\Capi}{\operatorname{\mathrm{C\kern-.08em a}}} % Capillary number
+\newcommand{\Cael}{\operatorname{\mathrm{C\kern-.08em a_{E\kern-.08em l}}}} % Elasto-Capillary number
+\newcommand{\Weber}{\operatorname{\mathrm{W\kern-.08em e}}} % Weber number
+\newcommand{\Weiss}{\operatorname{\mathrm{W\kern-.08em i}}} % Weissenberg number
+\newcommand{\Rey}{\operatorname{\mathrm{R\kern-.08em e}}} % Reynolds number
+\newcommand{\Ela}{\operatorname{\mathrm{E\kern-.08em l}}} % Elastic number
+\newcommand{\Gp}{G^\prime}
+\newcommand{\Gpp}{G^{\prime\prime}}
+
+
+\pagestyle{fancy}
